@@ -33,7 +33,6 @@ Install Nvidia Cuda [here](https://developer.nvidia.com/cuda-downloads)
 
 
 ## Screenshots
-Digit Prediction
 ![](https://media.discordapp.net/attachments/922891948082200617/979468369994592276/unknown.png)      
 
 ![](https://media.discordapp.net/attachments/922891948082200617/979468420800192522/unknown.png?width=536&height=551)
