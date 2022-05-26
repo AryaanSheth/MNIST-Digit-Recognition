@@ -78,8 +78,8 @@ model.summary()
 
 # Train Model
 batch_size = 512
-epochs = 10
-model.fit(x=x_train, y=y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_test, y_test))
+epochs = 15
+model.fit(x=x_train, y=y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_test, y_test)) # train model
 
 
 # Evaluate Model
@@ -88,15 +88,35 @@ test_loss, test_accuracy = model.evaluate(x_test, y_test,)
 
 y_prediction = model.predict(x_test)
 y_prediction_classes = np.argmax(y_prediction, axis=1)
-print(y_prediction, y_prediction_classes)
+#print(y_prediction, y_prediction_classes)
 
-# Generate Example Prediction & Confusion Matrix
-rand_index = np.random.choice(random.randint(0, x_test.shape[0]))
-x_sample = x_test[rand_index]
-y_true = np.argmax(y_test, axis=1)
-y_sample_true = y_true[rand_index]
-y_sample_prediction_classes = y_prediction_classes[rand_index]
+n = int(input('Enter Number of Predictions: '))
 
-plt.title(f'Prediction: {y_sample_prediction_classes} True: {y_sample_true}')
-plt.imshow(x_sample.reshape(28, 28), cmap='gray') 
-plt.show()
+#######################
+def example_prediction():   # plot example prediction
+    global y_true
+    # Generate Example Prediction
+    rand_index = np.random.choice(random.randint(0, 9))
+    x_sample = x_test[rand_index]
+    y_true = np.argmax(y_test, axis=1)
+    y_sample_true = y_true[rand_index]
+    y_sample_prediction_classes = y_prediction_classes[rand_index]
+    # Plot Sample Prediction
+    plt.title(f'Prediction: {y_sample_prediction_classes} True: {y_sample_true}')   # plot
+    plt.imshow(x_sample.reshape(28, 28), cmap='gray')
+
+def confusion_matrix_plot(): # plot confusion matrix
+    # Confusion Matrix
+    confusion_mtx = confusion_matrix(y_true, y_prediction_classes)
+    # Generates a heatmap of the confusion matrix
+    fig, ax = plt.subplots(figsize=(10, 10))
+    ax = sns.heatmap(confusion_mtx, annot=True, fmt = 'd', ax=ax, cmap='Greens') # plot
+    ax.set_xlabel('Predicted')
+    ax.set_ylabel('True')
+    ax.set_title('Confusion Matrix')
+    
+for i in range(n):  # plot n examples
+    example_prediction() 
+    confusion_matrix_plot()
+    plt.show() # show plots
+    
