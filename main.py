@@ -90,7 +90,7 @@ y_prediction = model.predict(x_test)
 y_prediction_classes = np.argmax(y_prediction, axis=1)
 #print(y_prediction, y_prediction_classes)
 
-n = int(input('Enter Number of Predictions: '))
+n = 1 # int(input('Enter Number of Predictions: '))
 
 #######################
 def example_prediction():   # plot example prediction
