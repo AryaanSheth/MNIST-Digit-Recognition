@@ -1,6 +1,5 @@
 
 # Python Mnist Classification
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
 Using a 3 layer neural network and the MNIST dataset in Keras. The program can predict      
 handwritten numbers with 97% + accuracy. 
